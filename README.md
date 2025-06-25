@@ -68,4 +68,21 @@ any compoenent name start with capital letter- convention -->
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeaderComponent />); -->
+root.render(<HeaderComponent />);
+ 
+
+ ****we are using config driven UI - Config-driven UI is a design pattern where the structure and behaviour of the user interface are defined using configuration files rather than hard-coded in the application. These configuration files are typically in formats like JSON or YAML. By separating the UI logic from the code, developers can easily modify the UI without changing the underlying codebase.
+
+
+react fibre, virtual DOM, diff algo, reconscilation, why we use keys, we dont use index key , react.fragment,map function
+
+why local/state variable is needed in react?
+microservices architecture, 
+ shimmer effect
+conditional render
+
+
+
+ -->
+
+
