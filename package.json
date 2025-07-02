@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router": "^7.6.3",
+    "react-router-dom": "^7.6.3"
   },
   "browserslist": [
     "defaults and fully supports es6-module",

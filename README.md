@@ -80,7 +80,31 @@ why local/state variable is needed in react?
 microservices architecture, 
  shimmer effect
 conditional render
+react router dom :- useRouteError, Link, routerprovider, children, path, errorElement, outlet, useparams, createBrowerRouter,
 
+class based component :- lifecyce- first constructor is called then the render() method is called then the componentDidMount function is called , the best place to make an API call in class based component is in componentDidMount() bcoz first the component is rendered then we will update the page by making an api call. 
+ we use useState hook in functional components but in class bades component we use constructor. and to set the function we use this.setState method   
+ use of super(props)
+
+class based component- not functional component
+react life cycle:- two phase
+                  1. render phase - it include constructor and render() -> this is fastest so, first constructor is called then render if they are having children then for all the children render phase will called then the commit phase is called in the sequence 
+                  2. commit phase - it is that phase where react actually modifying(updates) the DOM
+                  firstly, react done the render phase.
+
+ * Parent Constructor
+ * Parent render
+ *    First Child constructor
+ *    First Child render
+ *    Second Child constructor
+ *    Second Child render
+ *
+ *    DOM UPDATED for children
+ *
+ *    first Child componentDidMount
+ *    Second Child componentDid
+ *  Parent componentDidMount
+      *  why we should unmount the function? 
 
 
  -->

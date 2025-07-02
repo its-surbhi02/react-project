@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { RestaurantList } from "../constant";
 import { RestaurantCard } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import NoRestaurantFound from "./NoRestaurantFound";
+import { Link } from "react-router";
+
 
 
 function filterData(searchText, allRestaurants) {
@@ -17,6 +20,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const [loading, setLoading] = useState(true);
  
   useEffect(()=>{
     getRestaurant();
@@ -35,11 +39,14 @@ const Body = () => {
 const restaurantData = restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 setAllRestaurants(restaurantData);
 setFilteredRestaurants(restaurantData);
+setLoading(false);
 console.log(restaurantData);
+
 
     } 
     catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false);
     }
   }
 
@@ -47,12 +54,9 @@ console.log(restaurantData);
   // not render component(Early return)
   if(!allRestaurants === 0) return null;
 
-  //when restaurant is not found
-  // if(filteredRestaurants?.length === 0) return <><h1>No Restaurant Found</h1></>
+if (loading) return <Shimmer />;
 
-
-
-  return (allRestaurants?.length === 0) ? <Shimmer/> :  (
+  return (
     <>
       <div className="search-container">
         <input
@@ -76,68 +80,22 @@ console.log(restaurantData);
           Search
         </button>
       </div>
-      <div className="restaurant-list">
-        {filteredRestaurants.map((restaurant, index) => {
-          return <RestaurantCard
-    key={restaurant?.info?.id || index}
-    info={restaurant?.info}
-  />
-        })}
-      </div>
+      
+      {filteredRestaurants.length === 0 ? ( <NoRestaurantFound/>  ) : (
+        <div className="restaurant-list">
+          {/* {filteredRestaurants
+  .filter((r) => r?.info)
+  .map((restaurant, index) => {
+    console.log("Restaurant ID:", restaurant.info.id); // 👈 log her
+  })} */}
+          {filteredRestaurants.map((restaurant) => (
+            <Link to={ "/restaurant/" + restaurant.info.id } key={restaurant?.info?.id }>
+            <RestaurantCard info={restaurant?.info}/> </Link>
+          ))}
+        </div>
+      )}
     </>
   );
 };
 export default Body;
 
-
-
-
-
-
-
-// import { useState } from "react";
-// import { RestaurantList } from "../constant";
-// import { ResturantCard } from "./RestaurantCard";
-
-// function filterData(searchText, restaurants) {
-//   return restaurants.filter((restaurant) =>
-//     restaurant.name.toLowerCase().includes(searchText.toLowerCase())
-//   );
-// }
-
-// const Body = () => {
-//   const [searchText, setSearchText] = useState("");
-//   const [allRestaurants, setAllRestaurants] = useState(RestaurantList);
-//   const [restaurants, setRestaurants] = useState(RestaurantList);
-
-//   return (
-//     <>
-//       <div className="search-container">
-//         <input
-//           type="text"
-//           className="search-input"
-//           placeholder="Search"
-//           value={searchText}
-//           onChange={(e) => {
-//             setSearchText(e.target.value);
-//           }}
-//         />
-//         <button
-//           className="search-btn"
-//           onClick={() => {
-//             const data = filterData(searchText, allRestaurants);
-//             setRestaurants(data);
-//           }}>
-//           Search
-//         </button>
-//       </div>
-//       <div className="restaurant-list">
-//         {restaurants.map((restaurant) => {
-//           return <ResturantCard {...restaurant} key={restaurant.id} />;
-//         })}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Body;

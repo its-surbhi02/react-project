@@ -1,3 +1,6 @@
+*{
+  text-decoration: none;
+}
 .header{
     display: flex;
     justify-content: space-between;
@@ -202,4 +205,124 @@
   100% {
     background-position: 200% 0;
   }
+}
+
+/* === Restaurant Info Card === */
+.menu-card {
+  max-width: 800px;
+  margin: 40px auto 20px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.menu-image {
+  width: 250px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.menu-details {
+  flex: 1;
+  min-width: 250px;
+}
+
+.menu-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.menu-cuisines {
+  font-size: 1rem;
+  color: #757575;
+  margin: 4px 0;
+}
+
+.menu-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.menu-rating {
+  background-color: #48c479;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.menu-area {
+  font-size: 0.9rem;
+  color: #6b6b6b;
+}
+
+/* === Menu Items List === */
+.menu-heading {
+  text-align: center;
+  margin: 30px auto 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.menu-item-container {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-item-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  background-color: #fafafa;
+  align-items: center;
+}
+
+.menu-item-text {
+  flex: 1;
+}
+
+.menu-item-text h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.menu-item-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 4px 0;
+}
+
+.menu-item-price {
+  font-weight: bold;
+  color: #333;
+  margin-top: 6px;
+}
+
+.menu-item-image {
+  width: 100px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
 }
