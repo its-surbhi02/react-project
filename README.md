@@ -73,13 +73,44 @@ root.render(<HeaderComponent />);
 
  ****we are using config driven UI - Config-driven UI is a design pattern where the structure and behaviour of the user interface are defined using configuration files rather than hard-coded in the application. These configuration files are typically in formats like JSON or YAML. By separating the UI logic from the code, developers can easily modify the UI without changing the underlying codebase.
 
+. React Fiber
+React Fiber is the new architecture (introduced in React 16) for the React rendering engine.
+React Fiber helps React do two major things: Break work into chunks and pause work in between (non-blocking rendering).Handle updates in priority order (like animations first, background updates later)
 
-react fibre, virtual DOM, diff algo, reconscilation, why we use keys, we dont use index key , react.fragment,map function
+Diff Algorithm
+It’s the process React uses to compare the old virtual DOM with the new virtual DOM.
+It helps React know exactly what changed and where, so it only updates the minimum required parts of the real DOM.
 
-why local/state variable is needed in react?
-microservices architecture, 
- shimmer effect
-conditional render
+Reconciliation
+It’s the overall process React uses to update the UI when your component’s state or props change.
+Creating a new virtual DOM, Using the diff algorithm, Updating the real DOM
+
+Keys help React identify which items changed, added, or removed.
+If you use the array index as a key, and the list changes (like adding/removing items), React may confuse the items, leading to bugs.
+
+React.Fragment
+It lets you return multiple elements from a component without adding extra divs.
+It keeps your DOM clean, without unnecessary wrappers.
+ 
+ What is a state variable?
+A state variable is a piece of data that your component remembers between renders.
+Because React components re-render when data (state) changes, and you need a way to store and manage dynamic data.
+Without state, your component would be static.
+You use state when something changes on user action, like: Typing in a form, Clicking a button
+
+Microservices Architecture- Microservices architecture is a way of building an application by breaking it into small, independent services.
+Each microservice:
+Does one job (e.g., user service, product service)
+Runs independently
+Has its own database
+Can be deployed separately
+Scalability – You can scale only the needed service.
+Flexibility – Different teams can use different languages.
+Faster development – Teams can work independently.
+Isolation – One service’s crash doesn’t crash the entire app.
+
+** Conditional Rendering in React- Conditional rendering means showing different UI elements based on a condition (like an if statement for your JSX).
+
 react router dom :- useRouteError, Link, routerprovider, children, path, errorElement, outlet, useparams, createBrowerRouter,
 
 class based component :- lifecyce- first constructor is called then the render() method is called then the componentDidMount function is called , the best place to make an API call in class based component is in componentDidMount() bcoz first the component is rendered then we will update the page by making an api call. 
@@ -108,5 +139,6 @@ react life cycle:- two phase
 
 
  -->
+ 
 
 
