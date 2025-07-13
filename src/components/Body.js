@@ -4,6 +4,7 @@ import { RestaurantCard } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import NoRestaurantFound from "./NoRestaurantFound";
 import { Link } from "react-router";
+import useOnline from "../utils/useOnline";
 
 
 
@@ -50,6 +51,11 @@ console.log(restaurantData);
     }
   }
 
+  const isOnline = useOnline();
+
+  if(! isOnline){
+    return<h1>offline, please check your internet connection!!</h1>
+  }
 
   // not render component(Early return)
   if(!allRestaurants === 0) return null;
