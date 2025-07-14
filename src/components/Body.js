@@ -52,56 +52,105 @@ console.log(restaurantData);
   }
 
   const isOnline = useOnline();
-
   if(! isOnline){
     return<h1>offline, please check your internet connection!!</h1>
   }
+if (!isOnline) {
+  return (
+    <h1 className="text-center text-xl text-red-600 font-semibold mt-8">
+      Offline, please check your internet connection!
+    </h1>
+  );
+}
 
-  // not render component(Early return)
+
+//   // not render component(Early return)
   if(!allRestaurants === 0) return null;
 
-if (loading) return <Shimmer />;
+// if (loading) return <Shimmer />;
 
-  return (
-    <>
-      <div className="search-container">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button
-          className="search-btn"
-          onClick={() => {
-            //need to filter the data
-            // console.log("jjjj",restaurants.name)
-            const data = filterData(searchText, allRestaurants);
-            // update the state - restaurant variable
-            setFilteredRestaurants(data);
-          }}>
-          Search
-        </button>
-      </div>
+//   return (
+//     <>
+//       <div className="search-container">
+//         <input
+//           type="text"
+//           className="search-input"
+//           placeholder="Search"
+//           value={searchText}
+//           onChange={(e) => {
+//             setSearchText(e.target.value);
+//           }}
+//         />
+//         <button
+//           className="search-btn"
+//           onClick={() => {
+//             const data = filterData(searchText, allRestaurants);
+//             setFilteredRestaurants(data);
+//           }}>
+//           Search
+//         </button>
+//       </div>
       
-      {filteredRestaurants.length === 0 ? ( <NoRestaurantFound/>  ) : (
-        <div className="restaurant-list">
-          {/* {filteredRestaurants
-  .filter((r) => r?.info)
-  .map((restaurant, index) => {
-    console.log("Restaurant ID:", restaurant.info.id); // 👈 log her
-  })} */}
-          {filteredRestaurants.map((restaurant) => (
-            <Link to={ "/restaurant/" + restaurant.info.id } key={restaurant?.info?.id }>
-            <RestaurantCard info={restaurant?.info}/> </Link>
-          ))}
-        </div>
-      )}
-    </>
-  );
-};
+//       {filteredRestaurants.length === 0 ? ( <NoRestaurantFound/>  ) : (
+//         <div className="restaurant-list">
+          
+//           {filteredRestaurants.map((restaurant) => (
+//             <Link to={ "/restaurant/" + restaurant.info.id } key={restaurant?.info?.id }>
+//             <RestaurantCard info={restaurant?.info}/> </Link>
+//           ))}
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+return(
+<>
+  {/* Search Section */}
+  <div className="flex flex-col sm:flex-row justify-center items-center gap-4 p-4 bg-[#fff2e0] my-4">
+    <input
+      type="text"
+      className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c0c9ee]"
+      placeholder="Search"
+      value={searchText}
+      onChange={(e) => setSearchText(e.target.value)}
+    />
+    <button
+      className="w-full sm:w-auto bg-[#898ac4] hover:bg-[#a2aadb] text-white px-4 py-2 rounded-md transition"
+      onClick={() => {
+        const data = filterData(searchText, allRestaurants);
+        setFilteredRestaurants(data);
+      }}
+    >
+      Search
+    </button>
+  </div>
+
+  {/* Offline Message */}
+  {!isOnline && (
+    <h1 className="text-center text-lg text-red-600 font-semibold mt-6">
+      Offline, please check your internet connection!
+    </h1>
+  )}
+
+  {/* Shimmer Loader */}
+  {loading && <Shimmer />}
+
+  {/* Restaurant Cards */}
+  {!loading && filteredRestaurants.length === 0 ? (
+    <NoRestaurantFound />
+  ) : (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 bg-[#fefefe]">
+      {filteredRestaurants.map((restaurant) => (
+        <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+          <RestaurantCard info={restaurant.info} />
+        </Link>
+      ))}
+    </div>
+  )}
+</>
+
+)
+}
+
 export default Body;
 

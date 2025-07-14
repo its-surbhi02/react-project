@@ -140,7 +140,28 @@ react life cycle:- two phase
 - Custom Hooks
 - Modularity in Code
 - Modular Bundling
-- Code Splitting/ Lazy Loading/ Chunking/ Dynamic Bundling / On Demand Loading / Dynamic Import  
+- Code Splitting/ Lazy Loading/ Chunking/ Dynamic Bundling / On Demand Loading / Dynamic Import 
+
+Pros of using tailwind CSS:
+Rapid Prototyping 
+Consistent Design System 
+Responsive Design
+Reduced Context Switching
+Customization
+Performance
+Developer Experience
+
+Cons of using tailwind CSS:
+Verbose HTML:
+The extensive use of utility classes can lead to longer HTML files, potentially making them harder to read.
+Learning Curve:
+Beginners may find the utility-first approach overwhelming, and the need to learn Tailwind's class names can be a barrier to entry.
+Tight Coupling:
+Projects become heavily reliant on Tailwind, making it difficult to switch to another CSS framework later.
+Code Duplication:
+The ease of copying and pasting components can lead to code duplication if not managed properly through component extraction.
+Initial Setup:
+Setting up Tailwind can be more complex compared to simpler CSS frameworks.
  -->
  
 

@@ -1,30 +1,37 @@
 import { Link } from "react-router";
+
+
 const Title = () => (
   <a href="/">
-    <img
-      className="logo"
-      alt="logo"
-      src="https://yt3.ggpht.com/ytc/AKedOLSpK3T_2RxkMYb-pk9oENQB0NvYpeOdXRgQe8i5=s800-c-k-c0x00ffffff-no-rj"
-    />
+    <h1 className="text-3xl font-bold text-[#898ac4] hover:text-[#a2aadb] transition">
+      BiteSome
+    </h1>
   </a>
 );
 
 const Header = () => {
   return (
-    <div className="header">
+    <header className="flex justify-between items-center px-6 py-4 bg-[#fff2e0] shadow-md">
       <Title />
-      <div className="nav-items">
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about"> About us</Link></li>
-          
-         
-          <li><Link to="/contact">Contact Us</Link></li>
-          <li>Cart</li>
+      <nav>
+        <ul className="flex space-x-6 text-lg font-medium text-[#898ac4]">
+          <li>
+            <Link to="/" className="hover:text-[#a2aadb] transition">Home</Link>
+          </li>
+          <li>
+            <Link to="/about" className="hover:text-[#a2aadb] transition">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:text-[#a2aadb] transition">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/cart" className="hover:text-[#a2aadb] transition">Cart</Link>
+          </li>
         </ul>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
+
 
 export default Header;
