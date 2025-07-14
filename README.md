@@ -137,7 +137,10 @@ react life cycle:- two phase
  *  Parent componentDidMount
       *  why we should unmount the function? 
 
-
+- Custom Hooks
+- Modularity in Code
+- Modular Bundling
+- Code Splitting/ Lazy Loading/ Chunking/ Dynamic Bundling / On Demand Loading / Dynamic Import  
  -->
  
 
