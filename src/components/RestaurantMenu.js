@@ -43,7 +43,7 @@ const RestaurantMenu = () => {
     //   <img
     //     src={
     //       cloudinaryImageId
-    //         ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_400/${cloudinaryImageId}`
+          
     //         : ""
     //     }
     //     alt={name}
@@ -82,6 +82,7 @@ const RestaurantMenu = () => {
     //   </div>
     // </div>
     <div className="max-w-5xl mx-auto p-6 bg-[#fff2e0] rounded-xl shadow-md my-2">
+
   {/* Restaurant Banner */}
   <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
     <img

@@ -26,6 +26,8 @@ const Header = () => {
           </li>
           <li>
             <Link to="/cart" className="hover:text-[#a2aadb] transition">Cart</Link>
+          </li> <li>
+            <Link to="/instamart" className="hover:text-[#a2aadb] transition">Instamart</Link>
           </li>
         </ul>
       </nav>

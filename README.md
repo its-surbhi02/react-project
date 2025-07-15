@@ -162,6 +162,12 @@ Code Duplication:
 The ease of copying and pasting components can lead to code duplication if not managed properly through component extraction.
 Initial Setup:
 Setting up Tailwind can be more complex compared to simpler CSS frameworks.
+
+
+In React, data flow is typically unidirectional, from parent components to child components using props. When a piece of state or a function from a high-level parent component is needed by a deeply nested child component, and there are several intermediate components between them, each of those intermediate components must receive the prop and then pass it down to its child. This chain-like passing of props through components that don't actually use them is known as "props drilling." 
+Drawbacks of Props Drilling: Increased Code Complexity, Reduced Maintainability, Tight Coupling, Difficulty in Debugging
+
+lifiting the state up
  -->
  
 

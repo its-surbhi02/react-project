@@ -9,6 +9,7 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
+import Instamart from "./components/Instamart";
 
 const About = lazy(() => import("./components/About"))
 
@@ -48,6 +49,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: <Instamart />,
       },
     ],
   },
