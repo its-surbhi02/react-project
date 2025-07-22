@@ -11,25 +11,29 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Instamart from "./components/Instamart";
 import userContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
-const About = lazy(() => import("./components/About"))
+const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
   const [user, setUser] = useState({
     name: "surbhi",
-    email:"dummy@gmail.com"
-  })
+    email: "dummy@gmail.com",
+  });
   return (
     <>
-    <userContext.Provider 
-    value={{
-      user: user,
-      setUser: setUser,
-    }}>
-      <Header />
-      <Outlet />
-      <Footer />
-      </userContext.Provider>
+      <Provider store={store}>
+        <userContext.Provider
+          value={{
+            user: user,
+            setUser: setUser,
+          }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </userContext.Provider>
+      </Provider>
     </>
   );
 };
@@ -45,13 +49,17 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <Suspense><About /> </Suspense>,
-        children:[
+        element: (
+          <Suspense>
+            <About />{" "}
+          </Suspense>
+        ),
+        children: [
           {
-        path: "profile",
-        element: <Profile  />,
+            path: "profile",
+            element: <Profile />,
           },
-        ]
+        ],
       },
       {
         path: "/contact",
