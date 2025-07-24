@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 const useRestaurant = (id) => {
-    const [res, setRes] = useState(null);
-    
+  const [res, setRes] = useState(null);
+
   useEffect(() => {
     getRestaurantInfo();
   }, []);
@@ -14,9 +14,8 @@ const useRestaurant = (id) => {
     console.log(json.data);
     setRes(json.data);
   }
-  
-  return res
 
-}
+  return res;
+};
 
 export default useRestaurant;
