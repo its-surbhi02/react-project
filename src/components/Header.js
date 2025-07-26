@@ -1,6 +1,7 @@
 import { useState , useContext } from "react";
 import { Link } from "react-router";
 import userContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Title = () => (
   <a href="/">
@@ -14,6 +15,9 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { user } = useContext(userContext);
+
+  const cartItems = useSelector(store => store.cart.items);
+  console.log(cartItems);
 
   return (
     <header className="bg-[#fff2e0] shadow-md sticky top-0 z-50">
@@ -47,8 +51,8 @@ const Header = () => {
               <li><Link to="/" className="hover:text-[#a2aadb] transition">Home</Link></li>
               <li><Link to="/about" className="hover:text-[#a2aadb] transition">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-[#a2aadb] transition">Contact Us</Link></li>
-              <li><Link to="/cart" className="hover:text-[#a2aadb] transition">Cart</Link></li>
               <li><Link to="/instamart" className="hover:text-[#a2aadb] transition">Instamart</Link></li>
+              <li><Link to="/cart" className="hover:text-[#a2aadb] transition">Cart - {cartItems.length} items</Link></li>
             </ul>
 
             <span className="text-[#898ac4]">{user.name}</span>

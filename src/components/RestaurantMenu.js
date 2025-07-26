@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Shimmer from "./Shimmer.js";
 import useRestaurant from "../utils/useRestaurant.js";
+import { addItem } from "../utils/cartSlice.js";
+import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
@@ -28,13 +30,19 @@ const RestaurantMenu = () => {
     Array.isArray(c?.groupedCard?.cardGroupMap?.REGULAR?.cards)
   );
 
-  const menuCards =
-    groupedCards?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
+  const menuCards =  groupedCards?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
 
   const menuItems = menuCards
     .map((card) => card.card?.card)
     .filter((card) => card?.itemCards)
     .flatMap((card) => card.itemCards.map((item) => item.card.info));
+
+    const dispatch = useDispatch();
+
+    const addFoodItem = (item)=>{
+      dispatch(addItem(item));
+
+    };
 
   return !res ? (
     <Shimmer />
@@ -131,6 +139,7 @@ const RestaurantMenu = () => {
             alt={item.name}
           />
         )}
+        <button className="p-2 bg-green-500" onClick={()=> addFoodItem(item)}>Add</button>
       </div>
     ))}
   </div>
