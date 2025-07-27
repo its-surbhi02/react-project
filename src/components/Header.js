@@ -2,6 +2,7 @@ import { useState , useContext } from "react";
 import { Link } from "react-router";
 import userContext from "../utils/userContext";
 import { useSelector } from "react-redux";
+import { ShoppingCart } from "lucide-react";
 
 const Title = () => (
   <a href="/">
@@ -52,7 +53,15 @@ const Header = () => {
               <li><Link to="/about" className="hover:text-[#a2aadb] transition">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-[#a2aadb] transition">Contact Us</Link></li>
               <li><Link to="/instamart" className="hover:text-[#a2aadb] transition">Instamart</Link></li>
-              <li><Link to="/cart" className="hover:text-[#a2aadb] transition">Cart - {cartItems.length} items</Link></li>
+              <li><Link to="/cart" className="relative">
+        <ShoppingCart className="w-6 h-6 text-gray-700" />
+        {cartItems.length > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+            {cartItems.length}
+          </span>
+        )}
+      </Link>
+</li>
             </ul>
 
             <span className="text-[#898ac4]">{user.name}</span>

@@ -1,19 +1,19 @@
-
-export const RestaurantCard = ({ info }) => {
+const FoodItem = ({ info }) => {
     if (!info) {
     return <div></div>;
   }
   const {
-    name,
-    avgRating,
-    sla,
-    cuisines,
-    cloudinaryImageId,
-    areaName,
-    costForTwo
-  } = info;
+  name = "No name",
+  avgRating = "N/A",
+  sla = {},                  // provide fallback empty object
+  cuisines = [],
+  cloudinaryImageId,
+  areaName = "",
+  costForTwo = ""
+} = info || {};
 
   return (
+
     <div className="bg-white rounded-xl shadow hover:shadow-lg transition duration-300 overflow-hidden">
   <img
     className="w-full h-48 object-cover"
@@ -22,8 +22,11 @@ export const RestaurantCard = ({ info }) => {
   />
   <div className="p-4">
     <h3 className="text-lg font-semibold text-[#898ac4]">{name}</h3>
-    <p className="text-sm text-gray-500 mt-1">{cuisines.slice(0, 3).join(", ")}
-  {cuisines.length > 3 && " ..."}</p>
+    <p className="text-sm text-gray-500 mt-1">
+  {Array.isArray(cuisines) ? cuisines.slice(0, 3).join(", ") : "No cuisines"}
+  {Array.isArray(cuisines) && cuisines.length > 3 && " ..."}
+</p>
+
 
     <div className="flex flex-wrap items-center gap-2 text-sm text-[#898ac4] mt-2 font-medium">
       <span>⭐ {avgRating}</span>
@@ -39,3 +42,5 @@ export const RestaurantCard = ({ info }) => {
 
   );
 };
+
+export default FoodItem;

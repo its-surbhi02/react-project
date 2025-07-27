@@ -39,56 +39,20 @@ const RestaurantMenu = () => {
 
     const dispatch = useDispatch();
 
-    const addFoodItem = (item)=>{
-      dispatch(addItem(item));
+   const addFoodItem = (item) => {
+  // Convert imageId to cloudinaryImageId to match FoodItem props
+  const updatedItem = {
+    ...item,
+    cloudinaryImageId: item.imageId,
+  };
+  dispatch(addItem(updatedItem));
+};
 
-    };
 
   return !res ? (
     <Shimmer />
   ) : (
-    // <div className="menu-card">
-    //   <img
-    //     src={
-    //       cloudinaryImageId
-          
-    //         : ""
-    //     }
-    //     alt={name}
-    //     className="menu-image"
-    //   />
-    //   <div className="menu-details">
-    //     <h1 className="menu-name">{name}</h1>
-    //     <p className="menu-cuisines">{cuisines?.join(", ")}</p>
-    //     <div className="menu-meta">
-    //       <span className="menu-rating">⭐ {avgRating}</span>
-    //       <span>{costForTwoMessage}</span>
-    //     </div>
-    //     <p className="menu-area">{locality || areaName}</p>
-    //   </div>
 
-    //   <h2 className="menu-heading">Menu</h2>
-    //   <div className="menu-item-container">
-    //     {menuItems.map((item) => (
-    //       <div className="menu-item-card" key={item.id}>
-    //         <div className="menu-item-text">
-    //           <h3>{item.name}</h3>
-    //           <p className="menu-item-description">{item.description}</p>
-    //           <p className="menu-item-price">
-    //             ₹{item.price / 100 || item.defaultPrice / 100}
-    //           </p>
-    //         </div>
-    //         {item.imageId && (
-    //           <img
-    //             className="menu-item-image"
-    //             src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_200/${item.imageId}`}
-    //             alt={item.name}
-    //           />
-    //         )}
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
     <div className="max-w-5xl mx-auto p-6 bg-[#fff2e0] rounded-xl shadow-md my-2">
 
   {/* Restaurant Banner */}
@@ -120,10 +84,10 @@ const RestaurantMenu = () => {
 
   {/* Menu Items */}
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {menuItems.map((item) => (
+    {menuItems.map((item,  index) => (
       <div
         className="flex flex-col sm:flex-row justify-between items-start gap-4 bg-white rounded-lg p-4 shadow"
-        key={item.id}
+        key={`${item.id}-${index}`}
       >
         <div className="flex-1">
           <h3 className="text-lg font-semibold text-[#898ac4]">{item.name}</h3>
