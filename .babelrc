@@ -1,5 +1,0 @@
-
-  //"babel-plugin-transform-remove-console": "^6.9.4", in the package.json and in the devdependencies
-  {
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
-}

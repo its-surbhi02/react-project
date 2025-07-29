@@ -17,7 +17,7 @@ import Cart from "./components/Cart";
 
 const About = lazy(() => import("./components/About"));
 
-const AppLayout = () => {
+ const AppLayout = () => {
   const [user, setUser] = useState({
     name: "surbhi",
     email: "dummy@gmail.com",
